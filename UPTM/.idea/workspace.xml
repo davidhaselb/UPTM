@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72b6cc6c-f87c-4778-bfa3-7bafafd594a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UPTMUsageChartView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UPTM.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../UPTM.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UPTM.xcodeproj/project.xcworkspace/xcuserdata/davidhaselberger.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../UPTM.xcodeproj/project.xcworkspace/xcuserdata/davidhaselberger.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeKeeper.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TimeKeeper.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UPTMApp.swift" beforeDir="false" afterPath="$PROJECT_DIR$/UPTMApp.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2m9aVCORgIZdSjLpigK7BiYI1AD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/davidhaselberger/Sync/Programming/XCode13_2/UPTM/UPTM"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72b6cc6c-f87c-4778-bfa3-7bafafd594a8" name="Changes" comment="" />
+      <created>1726491266525</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726491266525</updated>
+    </task>
+    <servers />
+  </component>
+</project>

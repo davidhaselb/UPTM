@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 @main
 struct UPTMApp: App {
@@ -45,6 +46,20 @@ struct UPTMApp: App {
                 Image(systemName: self.tk.isRunning ? "pause":"play")
             }
             Divider()
+                        Menu("Statistics") {
+                            ForEach(self.tk.getLastFiveDaysUptime().sorted(by: { $0.key > $1.key }), id: \.key) { date, uptime in
+                                HStack {
+                                    Text("\(UPTMApp.dateFormatter.string(from: date))")
+                                    Spacer()
+                                    Text(UPTMApp.formatter.string(from: uptime)!)
+                                }
+                            }
+                            Divider()
+                            Button("Show Detailed Statistics") {
+                                showStatistics()
+                            }
+                        }
+            Divider()
             Button("Quit"){
                 NSApplication.shared.terminate(nil)
             }.keyboardShortcut("Q")
@@ -64,6 +79,20 @@ struct UPTMApp: App {
             }
         }.menuBarExtraStyle(.menu)
     }
+    
+    private func showStatistics() {
+            let data = tk.getLastFiveDaysUptime()
+            let chartView = UptimeChartView(data: data)
+            let hostingController = NSHostingController(rootView: chartView)
+            let window = NSWindow(contentViewController: hostingController)
+            window.makeKeyAndOrderFront(nil)
+        }
+
+        private static var dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            return formatter
+        }()
     
     
 }

@@ -25,16 +25,57 @@ import Foundation
         }
     }
     private(set) var elapsedTime: TimeInterval = 0
-  
+    private var dailyUptime: [Date: TimeInterval] = [:]
+    private let fileURL: URL
+    
+    
     init()
     {
         startTime = Date()
+        self.fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("uptimeData.json")
+                self.loadUptimeData()
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.screensDidSleepNotification, object: nil, queue: nil, using: manageTime)
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: nil, using: manageTime)
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil, using: manageTime)
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.screensDidWakeNotification, object: nil, queue: nil, using: manageTime)
         self.start()
     }
+    
+    private func saveUptimeData() {
+            do {
+                let data = try JSONEncoder().encode(dailyUptime)
+                try data.write(to: fileURL)
+            } catch {
+                print("Failed to save uptime data: \(error)")
+            }
+        }
+
+        private func loadUptimeData() {
+            do {
+                let data = try Data(contentsOf: fileURL)
+                dailyUptime = try JSONDecoder().decode([Date: TimeInterval].self, from: data)
+            } catch {
+                print("Failed to load uptime data: \(error)")
+            }
+        }
+
+        func updateDailyUptime() {
+            let today = calendar.startOfDay(for: Date())
+            if let uptime = dailyUptime[today] {
+                dailyUptime[today] = uptime + getElapsedTime()
+            } else {
+                dailyUptime[today] = getElapsedTime()
+            }
+
+            // Keep only the last 5 days
+            let fiveDaysAgo = calendar.date(byAdding: .day, value: -5, to: today)!
+            dailyUptime = dailyUptime.filter { $0.key >= fiveDaysAgo }
+            saveUptimeData()
+        }
+
+        func getLastFiveDaysUptime() -> [Date: TimeInterval] {
+            return dailyUptime
+        }
     
     private func manageTime(n: Notification) -> Void {
         if((n.name == NSWorkspace.screensDidSleepNotification)||(n.name == NSWorkspace.willSleepNotification)){
